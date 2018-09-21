@@ -1,0 +1,22 @@
+-#  This file is app/views/movies/index.html.haml
+%h1 All Movies
+
+%table#movies
+  %thead
+    %tr
+      %th{:class => @val}= sort_hyperlink "Movie Title"
+      %th Rating
+      %th{:class => @val2}= sort_hyperlink "Release Date"
+      %th More Info
+  %tbody
+    - @movies.each do |movie|
+      %tr
+        %td= movie.title 
+        %td= movie.rating
+        %td= movie.release_date
+        %td= link_to "More about #{movie.title}", movie_path(movie)
+
+= link_to 'Add new movie', new_movie_path
+
+-# Disclaimer
+-# Design pattern followed from https://richonrails.com/articles/sortable-table-columns
